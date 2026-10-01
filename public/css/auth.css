@@ -1,0 +1,1487 @@
+/* ============ AUTH PAGES - LOVE THEME ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body:has(.logout-page) {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+    padding-bottom: 0 !important;
+}
+
+body:has(.logout-page) .app-header,
+body:has(.logout-page) .bottom-nav,
+body:has(.logout-page) footer {
+    display: none !important;
+}
+
+/* ============ BACKGROUND AURORA ============ */
+body.auth-page::before {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 77, 121, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(77, 159, 255, 0.15) 0%, transparent 40%);
+    animation: auroraFloat 15s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes auroraFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(5%, -5%) rotate(120deg); }
+    66% { transform: translate(-5%, 5%) rotate(240deg); }
+}
+
+/* ============ FLOATING HEARTS BACKGROUND ============ */
+.auth-hearts-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.auth-heart-bg {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    animation: heartBgFloat 12s ease-in infinite;
+}
+
+@keyframes heartBgFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% {
+        transform: translateY(-100px) rotate(360deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ============ AUTH CARD ============ */
+.auth-card-love {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 28px;
+    padding: 40px 32px 32px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 
+        0 20px 60px rgba(255, 77, 121, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    animation: cardEnter 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============ HEART LOGO (Animated) ============ */
+.auth-heart-logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-shape {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    animation: heartBeat 1.4s ease-in-out infinite;
+}
+
+.heart-shape::before,
+.heart-shape::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 64px;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    border-radius: 40px 40px 0 0;
+    transform-origin: 0 100%;
+    box-shadow: 0 0 30px rgba(255, 77, 121, 0.6);
+}
+
+.heart-shape::before {
+    left: 40px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-shape::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+/* ============ WELCOME TEXT ============ */
+.auth-welcome {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-welcome h2 {
+    font-weight: 800;
+    font-size: 26px;
+    background: linear-gradient(135deg, #FF4D79 0%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.auth-welcome p {
+    color: #999;
+    font-size: 14px;
+}
+
+/* ============ FORM INPUT ============ */
+.auth-input-group {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.auth-input-group i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FF4D79;
+    font-size: 18px;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 16px 18px 16px 50px;
+    border: 2px solid #F0E6EA;
+    border-radius: 16px;
+    font-size: 15px;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+    outline: none;
+}
+
+.auth-input:focus {
+    border-color: #FF4D79;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 77, 121, 0.1);
+}
+
+.auth-input:focus + i,
+.auth-input-group:focus-within i {
+    transform: translateY(-50%) scale(1.2);
+    color: #FF4D79;
+}
+
+.auth-input::placeholder {
+    color: #BBB;
+}
+
+/* ============ AUTH BUTTON ============ */
+.auth-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    background-size: 200% 200%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    box-shadow: 0 8px 20px rgba(255, 77, 121, 0.3);
+    margin-top: 8px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 77, 121, 0.5);
+    background-position: 100% 0;
+}
+
+.auth-btn:active {
+    transform: translateY(-1px);
+}
+
+.auth-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.auth-btn:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.auth-btn i {
+    margin-right: 8px;
+}
+
+/* ============ FOOTER LINK ============ */
+.auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #999;
+}
+
+.auth-footer a {
+    color: #FF4D79;
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.auth-footer a:hover {
+    color: #A855F7;
+}
+
+.auth-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FF4D79, #A855F7);
+    transition: width 0.3s;
+}
+
+.auth-footer a:hover::after {
+    width: 100%;
+}
+
+/* ============ ERROR MESSAGE ============ */
+.auth-error {
+    background: linear-gradient(135deg, #FFE4E9, #FFD4DB);
+    color: #E53935;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: shake 0.5s;
+    border-left: 4px solid #E53935;
+}
+
+.auth-error i {
+    font-size: 20px;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* ============ LOGOUT PAGE - HEART BREAKING ============ */
+.logout-page {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FFF5F8 0%, #FFE9F0 50%, #FFDEE9 100%);
+    overflow: hidden;
+    padding: 40px 20px;
+    margin: 0;
+    z-index: 1;
+}
+
+/* Trái tim tách đôi */
+.broken-heart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 40px;
+    animation: heartBreakPulse 2s ease-in-out infinite;
+}
+
+@keyframes heartBreakPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.broken-heart-half {
+    position: absolute;
+    width: 100px;
+    height: 160px;
+    top: 0;
+    opacity: 0;
+}
+
+.broken-heart-half.left {
+    left: 0;
+    animation: heartLeftBreak 1.5s 0.3s ease-out forwards;
+}
+
+.broken-heart-half.right {
+    right: 0;
+    animation: heartRightBreak 1.5s 0.3s ease-out forwards;
+}
+
+.broken-heart-half svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 8px 24px rgba(255, 77, 121, 0.5));
+}
+
+@keyframes heartLeftBreak {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-30px, 20px) rotate(-20deg);
+    }
+}
+
+@keyframes heartRightBreak {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(30px, 20px) rotate(20deg);
+    }
+}
+
+/* Dòng chữ "Hẹn gặp lại" */
+.goodbye-text {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF4D79, #A855F7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: fadeInUp 1s 1.2s ease-out forwards;
+    text-align: center;
+}
+
+.goodbye-subtext {
+    color: #999;
+    font-size: 16px;
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeInUp 1s 1.6s ease-out forwards;
+    text-align: center;
+}
+
+/* Đồng hồ đếm ngược */
+.countdown-redirect {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FF4D79;
+    font-size: 14px;
+    opacity: 0;
+    animation: fadeInUp 1s 2s ease-out forwards;
+}
+
+.countdown-redirect strong {
+    font-size: 20px;
+    color: #E53935;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Vỡ tim nhỏ bay */
+.heart-fragment {
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    animation: fragmentFly 3s ease-out forwards;
+    z-index: 100;
+}
+
+@keyframes fragmentFly {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx, 100px), var(--ty, -200px)) scale(0.3) rotate(360deg);
+    }
+}
+
+/* ============================================
+   LOGIN SUCCESS OVERLAY - MODERN ANIMATION
+   ============================================ */
+/* ============================================
+   LOGIN SUCCESS OVERLAY
+   ============================================ */
+.login-success-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: linear-gradient(180deg, #FFF5F8 0%, #FFE9F0 50%, #FFDEE9 100%);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.login-success-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Aurora */
+.ls-aurora {
+    position: absolute;
+    inset: -50%;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 77, 121, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255, 128, 171, 0.25) 0%, transparent 50%);
+    animation: lsAuroraRotate 15s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes lsAuroraRotate {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Particles */
+.ls-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ls-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FF4D79 0%, #FF80AB 50%, transparent 100%);
+    box-shadow: 0 0 15px rgba(255, 77, 121, 0.9);
+    animation: lsParticleFloat 5s ease-in-out infinite;
+}
+
+@keyframes lsParticleFloat {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-40px) scale(1.5); opacity: 0.9; }
+}
+
+/* Stage tim */
+.reunite-stage {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    z-index: 5;
+}
+
+.reunite-heart-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.reunite-half {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 10px 30px rgba(255, 77, 121, 0.6));
+}
+
+.reunite-left {
+    left: 0;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    transform: translateX(-100px) translateY(50px) rotate(-40deg) scale(0.6);
+    opacity: 0;
+}
+
+.reunite-right {
+    right: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    transform: translateX(100px) translateY(50px) rotate(40deg) scale(0.6);
+    opacity: 0;
+}
+
+.login-success-overlay.active .reunite-left {
+    animation: reuniteLeftIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.login-success-overlay.active .reunite-right {
+    animation: reuniteRightIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes reuniteLeftIn {
+    0% { transform: translateX(-100px) translateY(50px) rotate(-40deg) scale(0.6); opacity: 0; }
+    60% { transform: translateX(5px) translateY(-5px) rotate(5deg) scale(1.05); opacity: 1; }
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+@keyframes reuniteRightIn {
+    0% { transform: translateX(100px) translateY(50px) rotate(40deg) scale(0.6); opacity: 0; }
+    60% { transform: translateX(-5px) translateY(-5px) rotate(-5deg) scale(1.05); opacity: 1; }
+    100% { transform: translateX(0) translateY(0) rotate(0deg) scale(1); opacity: 1; }
+}
+
+.login-success-overlay.active .reunite-heart-wrapper {
+    animation: heartBeatFinal 1s 1.2s ease-in-out infinite;
+}
+
+@keyframes heartBeatFinal {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.1); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.05); }
+}
+
+/* Shockwave */
+.reunite-shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: 3px solid #FF4D79;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.login-success-overlay.active .reunite-shockwave {
+    animation: reuniteShockwave 1.2s 0.9s ease-out forwards;
+}
+
+.login-success-overlay.active .reunite-shockwave-2 {
+    animation: reuniteShockwave 1.2s 1.05s ease-out forwards;
+    border-color: #A855F7;
+}
+
+@keyframes reuniteShockwave {
+    0% { width: 0; height: 0; opacity: 1; border-width: 5px; }
+    100% { width: 450px; height: 450px; opacity: 0; border-width: 1px; }
+}
+
+/* Content */
+.ls-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+    padding: 0 24px;
+}
+
+.ls-title {
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF4D79 0%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    opacity: 0;
+}
+
+.login-success-overlay.active .ls-title {
+    animation: lsFadeUp 0.8s 1s ease-out forwards;
+}
+
+.ls-subtitle {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 28px;
+    opacity: 0;
+}
+
+.login-success-overlay.active .ls-subtitle {
+    animation: lsFadeUp 0.8s 1.2s ease-out forwards;
+}
+
+@keyframes lsFadeUp {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress bar */
+.ls-progress {
+    width: 240px;
+    height: 6px;
+    background: rgba(255, 77, 121, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 12px;
+    opacity: 0;
+}
+
+.login-success-overlay.active .ls-progress {
+    animation: lsFadeUp 0.6s 1.3s ease-out forwards;
+}
+
+.ls-progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #FF4D79, #A855F7, #FF80AB);
+    background-size: 200% 100%;
+    border-radius: 10px;
+    animation: lsProgressShimmer 1.5s linear infinite;
+    box-shadow: 0 0 12px rgba(255, 77, 121, 0.6);
+}
+/* Khi progress đạt 100% */
+.ls-progress-bar[style*="width: 100%"] {
+    animation: none;
+    box-shadow: 0 0 20px rgba(255, 77, 121, 0.9),
+                0 0 40px rgba(255, 77, 121, 0.5);
+}
+
+.ls-progress-text[data-complete="true"] {
+    color: #4CAF50;
+    font-size: 15px;
+    animation: pulseComplete 0.6s ease-out;
+}
+
+@keyframes pulseComplete {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #4CAF50; }
+    100% { transform: scale(1); }
+}
+@keyframes lsProgressShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.ls-progress-text {
+    font-size: 13px;
+    color: #FF4D79;
+    font-weight: 700;
+    opacity: 0;
+}
+
+.login-success-overlay.active .ls-progress-text {
+    animation: lsFadeUp 0.6s 1.4s ease-out forwards;
+}
+
+/* Sparkles */
+.ls-sparkle {
+    position: fixed;
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 101;
+    animation: lsSparkleRise 1.8s ease-out forwards;
+}
+
+@keyframes lsSparkleRise {
+    0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+    60% { opacity: 1; transform: translate(var(--tx, 0), var(--ty, -60px)) scale(1.3) rotate(180deg); }
+    100% { opacity: 0; transform: translate(var(--tx, 0), var(--ty, -120px)) scale(0.3) rotate(360deg); }
+}
+/* ============================================
+   LOGOUT PAGE - MODERN HEARTBREAK
+   ============================================ */
+.logout-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FFF5F8 0%, #FFE9F0 50%, #FFDEE9 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px 100px;
+    margin-bottom: 70px;
+}
+
+/* Aurora nền */
+.logout-aurora {
+    position: absolute;
+    inset: -50%;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 77, 121, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255, 128, 171, 0.2) 0%, transparent 50%);
+    animation: auroraRotate 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes auroraRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Particles nền */
+.logout-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.logout-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FF4D79;
+    box-shadow: 0 0 10px rgba(255, 77, 121, 0.8);
+    animation: particleFloat 6s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-30px) scale(1.5);
+        opacity: 0.8;
+    }
+}
+
+/* ============ HEART STAGE ============ */
+.heart-stage {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    z-index: 5;
+}
+
+.heart-svg-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    animation: heartBeatSlow 1.2s ease-in-out infinite;
+}
+
+@keyframes heartBeatSlow {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.08); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.05); }
+}
+
+/* Mảnh tim */
+.heart-piece {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    transition: transform 1.2s cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.heart-left {
+    left: 0;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    transform-origin: center;
+}
+
+.heart-right {
+    right: 0;
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    transform-origin: center;
+}
+
+/* Khi tim vỡ */
+.logout-page.broken .heart-left {
+    animation: heartLeftFly 1.5s cubic-bezier(0.5, 0, 0.5, 1) forwards;
+}
+
+.logout-page.broken .heart-right {
+    animation: heartRightFly 1.5s cubic-bezier(0.5, 0, 0.5, 1) forwards;
+}
+
+.logout-page.broken .heart-svg-wrapper {
+    animation: none;
+}
+
+@keyframes heartLeftFly {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    30% {
+        transform: translate(-15px, -10px) rotate(-8deg);
+    }
+    100% {
+        transform: translate(-70px, 60px) rotate(-35deg);
+        opacity: 0.85;
+    }
+}
+
+@keyframes heartRightFly {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    30% {
+        transform: translate(15px, -10px) rotate(8deg);
+    }
+    100% {
+        transform: translate(70px, 60px) rotate(35deg);
+        opacity: 0.85;
+    }
+}
+
+/* Đường nứt sáng giữa tim */
+.crack-line {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    width: 3px;
+    height: 70%;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        #FFFFFF 20%, 
+        #FFF5F8 50%, 
+        #FFFFFF 80%, 
+        transparent 100%);
+    box-shadow: 
+        0 0 20px #FFFFFF,
+        0 0 40px #FF4D79,
+        0 0 60px #FF4D79;
+    border-radius: 3px;
+    opacity: 0;
+    transform-origin: center;
+    z-index: 10;
+}
+
+.logout-page.cracking .crack-line {
+    animation: crackAppear 0.8s ease-out forwards;
+}
+
+@keyframes crackAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scaleY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scaleY(1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scaleY(1) scaleX(2);
+    }
+}
+
+/* Vòng sáng lan ra */
+.shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    border: 3px solid #FF4D79;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.logout-page.broken .shockwave {
+    animation: shockwaveExpand 1.5s ease-out forwards;
+}
+
+.logout-page.broken .shockwave-2 {
+    animation: shockwaveExpand 1.5s 0.15s ease-out forwards;
+    border-color: #A855F7;
+}
+
+@keyframes shockwaveExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        border-width: 4px;
+    }
+    100% {
+        width: 400px;
+        height: 400px;
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+/* ============ GOODBYE CONTENT ============ */
+.goodbye-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+.goodbye-title {
+    font-size: 38px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF4D79 0%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    opacity: 0;
+    letter-spacing: -0.5px;
+}
+
+.goodbye-title.show {
+    animation: titleReveal 1s ease-out forwards;
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.goodbye-heart-emoji {
+    font-size: 28px;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: heartEmojiDrop 0.8s 0.3s ease-out forwards;
+    display: inline-block;
+}
+
+@keyframes heartEmojiDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) rotate(-30deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px) rotate(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.goodbye-subtext {
+    font-size: 15px;
+    color: #999;
+    margin-top: 8px;
+    opacity: 0;
+    animation: fadeInUp 1s 0.6s ease-out forwards;
+}
+
+/* Nút đăng nhập lại */
+.btn-back-login {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    background-size: 200% 200%;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 8px 24px rgba(255, 77, 121, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeInUp 1s 1s ease-out forwards, btnShimmer 3s 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.btn-back-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(255, 77, 121, 0.6);
+    color: white;
+}
+
+.btn-back-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmerSlide 2.5s 2s ease-in-out infinite;
+}
+
+@keyframes shimmerSlide {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+@keyframes btnShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Countdown */
+.countdown-redirect {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FF4D79;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 16px rgba(255, 77, 121, 0.15);
+    opacity: 0;
+    animation: fadeInUp 0.8s 1.3s ease-out forwards;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.countdown-redirect strong {
+    font-size: 16px;
+    color: #E53935;
+    font-weight: 800;
+}
+
+/* ============ FRAGMENT PARTICLES (khi tim vỡ) ============ */
+.heart-fragment {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #FF4D79, #FF80AB);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(255, 77, 121, 0.8);
+    animation: fragmentFly 2.5s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes fragmentFly {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx, 100px), var(--ty, -200px)) 
+                   scale(0.2) rotate(var(--rot, 360deg));
+    }
+}
+
+/* Sao bay lên (sparkles) */
+.sparkle {
+    position: fixed;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 101;
+    animation: sparkleRise 2s ease-out forwards;
+    filter: drop-shadow(0 0 6px rgba(255, 200, 100, 0.9));
+}
+
+@keyframes sparkleRise {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(var(--tx, 0), var(--ty, -50px)) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx, 0), var(--ty, -100px)) scale(0.3);
+    }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 480px) {
+    .goodbye-title {
+        font-size: 30px;
+    }
+    
+    .heart-stage {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .heart-svg-wrapper,
+    .heart-piece {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .countdown-redirect {
+        bottom: 90px;
+    }
+}
+/* ============ LOGOUT BODY OVERRIDE ============ */
+body.logout-body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: #FFF5F8;
+}
+/* Highlight trường username */
+.auth-input-group input[name="username"] {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+}
+
+/* Placeholder đẹp hơn */
+.auth-input::placeholder {
+    color: #BBB;
+    font-style: italic;
+}
+/* ============================================
+   AUTH PAGE - DESKTOP RESPONSIVE
+   ============================================ */
+@media (min-width: 768px) {
+    body.auth-page {
+        padding: 0 !important;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(255, 77, 121, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+            linear-gradient(135deg, #FFF5F8 0%, #FFE9F0 50%, #F5E6FF 100%);
+        overflow: hidden;
+    }
+
+    body.auth-page::before {
+        animation-duration: 30s;
+    }
+
+    /* Card to hơn, đẹp hơn trên desktop */
+    .auth-card-love {
+        max-width: 460px;
+        padding: 48px 40px 40px;
+        border-radius: 32px;
+        box-shadow: 
+            0 30px 80px rgba(255, 77, 121, 0.25),
+            0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    }
+
+    .auth-heart-logo {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 32px;
+    }
+
+    .heart-shape {
+        width: 110px;
+        height: 110px;
+    }
+
+    .heart-shape::before,
+    .heart-shape::after {
+        width: 55px;
+        height: 88px;
+        border-radius: 55px 55px 0 0;
+    }
+
+    .heart-shape::before {
+        left: 55px;
+    }
+
+    .auth-welcome {
+        margin-bottom: 36px;
+    }
+
+    .auth-welcome h2 {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .auth-welcome p {
+        font-size: 15px;
+    }
+
+    .auth-input-group {
+        margin-bottom: 20px;
+    }
+
+    .auth-input {
+        padding: 18px 20px 18px 56px;
+        font-size: 16px;
+        border-radius: 18px;
+    }
+
+    .auth-input-group i {
+        font-size: 20px;
+        left: 22px;
+    }
+
+    .auth-btn {
+        padding: 18px;
+        font-size: 17px;
+        border-radius: 18px;
+        margin-top: 12px;
+    }
+
+    .auth-footer {
+        margin-top: 32px;
+        font-size: 15px;
+    }
+
+    /* Animation đẹp hơn khi load trên desktop */
+    .auth-card-love {
+        animation: cardEnterDesktop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes cardEnterDesktop {
+        0% {
+            opacity: 0;
+            transform: translateY(60px) scale(0.85);
+            filter: blur(10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+}
+
+/* ============================================
+   LOGOUT PAGE - DESKTOP RESPONSIVE
+   ============================================ */
+@media (min-width: 768px) {
+    .logout-page {
+        padding: 60px 40px;
+    }
+
+    .heart-stage {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 60px;
+    }
+
+    .heart-svg-wrapper,
+    .heart-piece {
+        width: 260px;
+        height: 260px;
+    }
+
+    .goodbye-title {
+        font-size: 52px;
+    }
+
+    .goodbye-heart-emoji {
+        font-size: 40px;
+    }
+
+    .goodbye-subtext {
+        font-size: 18px;
+        margin-top: 16px;
+    }
+
+    .btn-back-login {
+        margin-top: 48px;
+        padding: 18px 40px;
+        font-size: 17px;
+        border-radius: 60px;
+    }
+
+    .countdown-redirect {
+        bottom: 60px;
+        font-size: 15px;
+        padding: 12px 28px;
+    }
+
+    .countdown-redirect strong {
+        font-size: 20px;
+    }
+}
+/* ============================================
+   HELP BUTTON - AUTH PAGES (Login/Register/Logout)
+   ============================================ */
+.help-fab-auth {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 8px 24px rgba(255, 77, 121, 0.5);
+    transition: all 0.3s;
+    z-index: 9998;
+    animation: fabPulseAuth 2s ease-in-out infinite;
+}
+
+.help-fab-auth:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 12px 32px rgba(255, 77, 121, 0.7);
+}
+
+@keyframes fabPulseAuth {
+    0%, 100% {
+        box-shadow: 0 8px 24px rgba(255, 77, 121, 0.5);
+    }
+    50% {
+        box-shadow: 0 8px 24px rgba(255, 77, 121, 0.5),
+                    0 0 0 12px rgba(255, 77, 121, 0.15);
+    }
+}
+
+.help-menu-auth {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    background: white;
+    border-radius: 20px;
+    padding: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    min-width: 240px;
+    max-width: 90vw;
+}
+
+.help-menu-auth.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* ============================================
+   LOGOUT PAGE - HELP BUTTON (Tránh bottom nav)
+   ============================================ */
+.logout-page ~ .help-fab-auth,
+body:has(.logout-page) .help-fab-auth {
+    bottom: 100px !important;
+}
+
+body:has(.logout-page) .help-menu-auth {
+    bottom: 172px !important;
+}
+
+/* ============================================
+   RESPONSIVE MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+    .help-fab-auth {
+        bottom: 100px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    
+    .help-menu-auth {
+        bottom: 164px;
+        right: 16px;
+        left: 16px;
+        min-width: auto;
+    }
+    
+    body:has(.logout-page) .help-fab-auth {
+        bottom: 90px !important;
+    }
+    
+    body:has(.logout-page) .help-menu-auth {
+        bottom: 154px !important;
+    }
+}

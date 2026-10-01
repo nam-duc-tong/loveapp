@@ -1,0 +1,510 @@
+/* ============================================
+   ONBOARDING TOUR + TOOLTIPS + HELP
+   ============================================ */
+
+/* ============ OVERLAY ============ */
+.onboarding-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s;
+}
+
+.onboarding-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============ WELCOME MODAL ============ */
+.onboarding-welcome {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: linear-gradient(135deg, #FFF5F8 0%, #FFE4E9 100%);
+    border-radius: 28px;
+    padding: 40px 32px;
+    max-width: 420px;
+    width: 90%;
+    z-index: 99999;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 30px 80px rgba(255, 77, 121, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.onboarding-welcome.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.onboarding-heart {
+    font-size: 80px;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: heartbeatBig 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeatBig {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+.onboarding-title {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF4D79 0%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.onboarding-desc {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 28px;
+    line-height: 1.5;
+}
+
+.onboarding-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(255, 77, 121, 0.4);
+    transition: all 0.3s;
+    margin-bottom: 12px;
+}
+
+.onboarding-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(255, 77, 121, 0.5);
+}
+
+.onboarding-skip {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px;
+    transition: color 0.3s;
+}
+
+.onboarding-skip:hover {
+    color: #FF4D79;
+}
+
+/* ============ TOUR STEP ============ */
+.tour-popup {
+    position: fixed;
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 360px;
+    z-index: 99999;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s;
+}
+
+.tour-popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tour-popup.above {
+    transform: translateY(-20px);
+}
+
+.tour-popup.below {
+    transform: translateY(20px);
+}
+
+.tour-arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+.tour-popup.above .tour-arrow {
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.tour-popup.below .tour-arrow {
+    top: -10px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.tour-step-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.tour-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.tour-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tour-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.tour-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tour-btn-primary {
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    color: white;
+    flex: 1;
+}
+
+.tour-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 77, 121, 0.4);
+}
+
+.tour-btn-skip {
+    background: transparent;
+    color: #999;
+}
+
+.tour-btn-skip:hover {
+    color: #FF4D79;
+}
+
+.tour-progress {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.tour-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #E0E0E0;
+    transition: all 0.3s;
+}
+
+.tour-dot.active {
+    background: #FF4D79;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Highlight element */
+.tour-highlight {
+    position: relative;
+    z-index: 99999 !important;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75),
+                0 0 0 4px #FF4D79,
+                0 0 40px rgba(255, 77, 121, 0.8) !important;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+/* ============ TOOLTIPS ============ */
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 77, 121, 0.15);
+    color: #FF4D79;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: help;
+    margin-left: 6px;
+    transition: all 0.3s;
+}
+
+.tooltip-icon:hover {
+    background: #FF4D79;
+    color: white;
+    transform: scale(1.15);
+}
+
+.tooltip-content {
+    position: fixed;
+    background: #333;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    max-width: 260px;
+    z-index: 100000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    pointer-events: none;
+    line-height: 1.5;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-content.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-content::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #333;
+    transform: rotate(45deg);
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+}
+
+/* ============ HELP BUTTON FLOATING ============ */
+.help-fab {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 8px 24px rgba(255, 77, 121, 0.5);
+    transition: all 0.3s;
+    z-index: 99000;
+    animation: fabPulse 2s ease-in-out infinite;
+}
+
+.help-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(255, 77, 121, 0.7);
+}
+
+@keyframes fabPulse {
+    0%, 100% {
+        box-shadow: 0 8px 24px rgba(255, 77, 121, 0.5);
+    }
+    50% {
+        box-shadow: 0 8px 24px rgba(255, 77, 121, 0.5),
+                    0 0 0 12px rgba(255, 77, 121, 0.15);
+    }
+}
+
+/* ============ HELP MENU POPUP ============ */
+.help-menu {
+    position: fixed;
+    bottom: 170px;
+    right: 20px;
+    background: white;
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    z-index: 99001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    min-width: 240px;
+}
+
+.help-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.help-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.help-menu-item:hover {
+    background: #FFF5F8;
+    color: #FF4D79;
+    transform: translateX(4px);
+}
+
+.help-menu-item i {
+    font-size: 18px;
+    color: #FF4D79;
+    width: 24px;
+    text-align: center;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 480px) {
+    .onboarding-welcome {
+        padding: 32px 24px;
+    }
+    
+    .onboarding-heart {
+        font-size: 64px;
+    }
+    
+    .onboarding-title {
+        font-size: 22px;
+    }
+    
+    .tour-popup {
+        max-width: 320px;
+        padding: 20px;
+    }
+    
+    .help-fab {
+        bottom: 90px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    
+    .help-menu {
+        right: 16px;
+        bottom: 150px;
+        min-width: 220px;
+    }
+}
+
+/* ============ HELP PAGE ============ */
+.help-page {
+    padding: 20px 0 100px;
+}
+
+.help-hero {
+    text-align: center;
+    padding: 24px 20px;
+    background: linear-gradient(135deg, #FF4D79 0%, #FF80AB 100%);
+    border-radius: 24px;
+    color: white;
+    margin-bottom: 24px;
+    box-shadow: 0 12px 32px rgba(255, 77, 121, 0.3);
+}
+
+.help-hero h2 {
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.help-hero p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(255, 77, 121, 0.08);
+    transition: all 0.3s;
+}
+
+.faq-item:hover {
+    box-shadow: 0 8px 24px rgba(255, 77, 121, 0.15);
+}
+
+.faq-question {
+    padding: 18px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.faq-question:hover {
+    color: #FF4D79;
+}
+
+.faq-question i {
+    color: #FF4D79;
+    transition: transform 0.3s;
+}
+
+.faq-item.open .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.7;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 500px;
+    padding: 0 20px 20px;
+}

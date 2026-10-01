@@ -1,0 +1,34 @@
+lovex/
+├── app/
+│   ├── controllers/
+│   │   ├── AuthController.php
+│   │   ├── HomeController.php
+│   │   ├── CheckinController.php
+│   │   └── MemoryController.php
+│   ├── models/
+│   │   ├── User.php
+│   │   ├── Couple.php
+│   │   ├── Checkin.php
+│   │   └── Memory.php
+│   └── views/
+│       ├── layouts/
+│       │   ├── header.php
+│       │   └── footer.php
+│       ├── auth/
+│       │   ├── login.php
+│       │   └── register.php
+│       ├── home.php
+│       ├── checkin.php
+│       └── memories.php
+├── config/
+│   └── database.php
+├── public/
+│   ├── index.php
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── app.js
+│   └── uploads/
+├── sql/
+│   └── lovex_db.sql
+└── .htaccess
